@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OrcaSlicer Gcode Profile Recovery Tool</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🔧 OrcaSlicer Gcode Profile Recovery</h1>
+            <p class="subtitle">Extract printer, filament, and process profiles from your gcode files</p>
+            <p class="note">✓ All settings verified against OrcaSlicer system profiles</p>
+        </header>
+
+        <main>
+            <section class="upload-section">
+                <div class="upload-area" id="uploadArea">
+                    <div class="upload-icon">📁</div>
+                    <p class="upload-text">Drop your gcode file here or click to browse</p>
+                    <input type="file" id="fileInput" accept=".gcode" hidden>
+                    <button class="btn btn-primary" id="browseBtn">Browse Files</button>
+                </div>
+            </section>
+
+            <section class="info-section" id="infoSection" style="display: none;">
+                <h2>📊 Profile Information</h2>
+                <div class="info-grid">
+                    <div class="info-card">
+                        <h3>🖨️ Printer</h3>
+                        <p id="printerName" class="profile-name">-</p>
+                    </div>
+                    <div class="info-card">
+                        <h3>🧵 Filament</h3>
+                        <p id="filamentName" class="profile-name">-</p>
+                    </div>
+                    <div class="info-card">
+                        <h3>⚙️ Process</h3>
+                        <p id="processName" class="profile-name">-</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="stats-section" id="statsSection" style="display: none;">
+                <h2>📈 Profile Statistics</h2>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <span class="stat-label">Printer Settings:</span>
+                        <span class="stat-value" id="printerCount">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Filament Settings:</span>
+                        <span class="stat-value" id="filamentCount">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Process Settings:</span>
+                        <span class="stat-value" id="processCount">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Total Settings:</span>
+                        <span class="stat-value" id="totalCount">0</span>
+                    </div>
+                </div>
+            </section>
+
+            <section class="download-section" id="downloadSection" style="display: none;">
+                <h2>⬇️ Download Profiles</h2>
+                <div class="button-grid">
+                    <button class="btn btn-download" id="downloadPrinter">
+                        <span class="btn-icon">🖨️</span>
+                        <span class="btn-text">Printer Profile (.json)</span>
+                    </button>
+                    <button class="btn btn-download" id="downloadFilament">
+                        <span class="btn-icon">🧵</span>
+                        <span class="btn-text">Filament Profile (.json)</span>
+                    </button>
+                    <button class="btn btn-download" id="downloadProcess">
+                        <span class="btn-icon">⚙️</span>
+                        <span class="btn-text">Process Profile (.json)</span>
+                    </button>
+                    <button class="btn btn-download-all" id="downloadAll">
+                        <span class="btn-icon">📦</span>
+                        <span class="btn-text">Download All Profiles</span>
+                    </button>
+                </div>
+            </section>
+
+            <section class="preview-section" id="previewSection" style="display: none;">
+                <h2>👁️ Profile Preview</h2>
+                <div class="tabs">
+                    <button class="tab active" data-tab="printer">Printer</button>
+                    <button class="tab" data-tab="filament">Filament</button>
+                    <button class="tab" data-tab="process">Process</button>
+                </div>
+                <div class="preview-content">
+                    <pre id="previewCode" class="code-preview"></pre>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>Made with ❤️ for the 3D printing community | Settings verified against OrcaSlicer v2.3.0.3</p>
+        </footer>
+    </div>
+
+    <script src="parser.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
