@@ -1,41 +1,39 @@
-# OrcaSlicer Gcode Profile Recovery
+# 🔧 OrcaSlicer Gcode Profile Recovery
 
-Extract printer, filament, and process profiles from OrcaSlicer gcode files.
+Lost your 3D printer profiles? Recover them from your gcode files.
 
-## What it does
+---
 
-If you lost your OrcaSlicer profiles but have a gcode file, this tool recovers your settings:
-- Printer (machine) profile
-- Filament profile
-- Process (print) profile
+## 💡 What it does
 
-## How to use
+This tool extracts your **printer**, **filament**, and **process** settings from any OrcaSlicer gcode file and saves them as importable profiles.
 
-1. Open `index.html` in your web browser
-2. Drop your `.gcode` file or click to browse
-3. Download the recovered profile files
+---
 
-Alternatively, run with a local server:
-```bash
-python3 -m http.server 8000
-```
-Then open `http://localhost:8000`
+## 🚀 How to use
 
-## Import to OrcaSlicer
+**👉 Visit: https://alisandagdelen.github.io/gcode-profile-extractor/**
 
-Copy the downloaded JSON files to your OrcaSlicer user folder:
+1. 📁 Upload your `.gcode` file
+2. ⬇️ Download the recovered profiles
+3. ✅ Import them back into OrcaSlicer
 
-- **macOS**: `~/Library/Application Support/OrcaSlicer/user/default/`
-- **Windows**: `%APPDATA%/OrcaSlicer/user/default/`
-- **Linux**: `~/.config/OrcaSlicer/user/default/`
+---
 
-Place files in the appropriate subfolder:
-- Printer files → `machine/`
-- Filament files → `filament/`
-- Process files → `process/`
+## 📥 Importing profiles to OrcaSlicer
 
-Restart OrcaSlicer to see your profiles.
+### 1️⃣ Find your OrcaSlicer user folder:
 
-## Requirements
+- 🍎 **macOS**: `~/Library/Application Support/OrcaSlicer/user/default/`
+- 🪟 **Windows**: `%APPDATA%/OrcaSlicer/user/default/`
+- 🐧 **Linux**: `~/.config/OrcaSlicer/user/default/`
 
-Any modern web browser (Chrome, Firefox, Safari, Edge)
+### 2️⃣ Copy the downloaded files:
+
+- 🖨️ Printer `.json` files → `machine/` folder
+- 🧵 Filament `.json` files → `filament/` folder
+- ⚙️ Process `.json` files → `process/` folder
+
+### 3️⃣ Restart OrcaSlicer
+
+Your profiles will appear in the app! 🎉

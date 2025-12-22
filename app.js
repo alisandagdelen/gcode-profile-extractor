@@ -6,7 +6,6 @@ const uploadArea = document.getElementById('uploadArea');
 const fileInput = document.getElementById('fileInput');
 const browseBtn = document.getElementById('browseBtn');
 const infoSection = document.getElementById('infoSection');
-const statsSection = document.getElementById('statsSection');
 const downloadSection = document.getElementById('downloadSection');
 const previewSection = document.getElementById('previewSection');
 
@@ -131,12 +130,10 @@ function parseAndDisplay(gcodeText) {
 
         // Update UI
         displayProfileInfo();
-        displayStats();
         displayPreview('printer');
 
         // Show sections
         infoSection.style.display = 'block';
-        statsSection.style.display = 'block';
         downloadSection.style.display = 'block';
         previewSection.style.display = 'block';
 
@@ -152,18 +149,6 @@ function displayProfileInfo() {
     document.getElementById('printerName').textContent = currentProfiles.machine.name;
     document.getElementById('filamentName').textContent = currentProfiles.filament.name;
     document.getElementById('processName').textContent = currentProfiles.process.name;
-}
-
-function displayStats() {
-    const printerCount = Object.keys(currentProfiles.machine).length - 3; // Exclude type, from, is_custom_defined
-    const filamentCount = Object.keys(currentProfiles.filament).length - 3;
-    const processCount = Object.keys(currentProfiles.process).length - 3;
-    const totalCount = printerCount + filamentCount + processCount;
-
-    document.getElementById('printerCount').textContent = printerCount;
-    document.getElementById('filamentCount').textContent = filamentCount;
-    document.getElementById('processCount').textContent = processCount;
-    document.getElementById('totalCount').textContent = totalCount;
 }
 
 function switchTab(tabName) {
