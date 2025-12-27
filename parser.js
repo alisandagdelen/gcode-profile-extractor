@@ -421,18 +421,22 @@ function categorizeSettings(config) {
     process.print_settings_id = printSettingsId;
 
     // Parse inherits_group to set inheritance
+    // Format: ;"Filament";"Printer" or "Process";"Filament";"Printer"
     if (config['inherits_group']) {
-        const inheritsGroup = config['inherits_group'];
-        // Format: "Process";"Filament";"Printer"
-        const matches = inheritsGroup.match(/"([^"]+)"/g);
-        if (matches && matches.length === 3) {
-            const processInherits = matches[0].replace(/"/g, '');
-            const filamentInherits = matches[1].replace(/"/g, '');
-            const printerInherits = matches[2].replace(/"/g, '');
+        const parts = config['inherits_group'].split(';');
 
-            process.inherits = processInherits;
-            filament.inherits = filamentInherits;
-            machine.inherits = printerInherits;
+        if (parts.length >= 3) {
+            // parts[0] is process (may be empty)
+            // parts[1] is filament
+            // parts[2] is printer
+
+            const processInherits = parts[0].replace(/"/g, '').trim();
+            const filamentInherits = parts[1].replace(/"/g, '').trim();
+            const printerInherits = parts[2].replace(/"/g, '').trim();
+
+            if (processInherits) process.inherits = processInherits;
+            if (filamentInherits) filament.inherits = filamentInherits;
+            if (printerInherits) machine.inherits = printerInherits;
         }
     }
 
