@@ -453,7 +453,7 @@ function categorizeSettings(config) {
             key === 'timelapse_type' || key === 'notes' || key === 'bbl_calib_mark_logo' ||
             key === 'bbl_use_printhost' || key === 'printer_notes' || key === 'bed_shape' ||
             key === 'first_layer_bed_temperature' || key === 'first_layer_temperature' ||
-            key === 'first_layer_height' || key === 'version') {
+            key === 'first_layer_height') {
             continue;
         }
 
