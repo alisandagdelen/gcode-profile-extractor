@@ -428,12 +428,12 @@ function categorizeSettings(config) {
         }
 
         // Skip non-setting keys
-        if (key === 'different_settings_to_system' || key === 'inherits_group' ||
+        if (key === 'different_settings_to_system' || key === 'inherits_group' || key === 'inherits' ||
             key === 'curr_bed_type' || key === 'default_bed_type' || key === 'time_cost' ||
             key === 'timelapse_type' || key === 'notes' || key === 'bbl_calib_mark_logo' ||
             key === 'bbl_use_printhost' || key === 'printer_notes' || key === 'bed_shape' ||
             key === 'first_layer_bed_temperature' || key === 'first_layer_temperature' ||
-            key === 'first_layer_height') {
+            key === 'first_layer_height' || key === 'version') {
             continue;
         }
 
