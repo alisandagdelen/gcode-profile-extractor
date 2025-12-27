@@ -420,6 +420,22 @@ function categorizeSettings(config) {
     process.name = printSettingsId;
     process.print_settings_id = printSettingsId;
 
+    // Parse inherits_group to set inheritance
+    if (config['inherits_group']) {
+        const inheritsGroup = config['inherits_group'];
+        // Format: "Process";"Filament";"Printer"
+        const matches = inheritsGroup.match(/"([^"]+)"/g);
+        if (matches && matches.length === 3) {
+            const processInherits = matches[0].replace(/"/g, '');
+            const filamentInherits = matches[1].replace(/"/g, '');
+            const printerInherits = matches[2].replace(/"/g, '');
+
+            process.inherits = processInherits;
+            filament.inherits = filamentInherits;
+            machine.inherits = printerInherits;
+        }
+    }
+
     // Categorize all settings
     for (const [key, value] of Object.entries(config)) {
         // Skip metadata keys we already handled
@@ -428,7 +444,7 @@ function categorizeSettings(config) {
         }
 
         // Skip non-setting keys
-        if (key === 'different_settings_to_system' || key === 'inherits_group' || key === 'inherits' ||
+        if (key === 'different_settings_to_system' || key === 'inherits_group' ||
             key === 'curr_bed_type' || key === 'default_bed_type' || key === 'time_cost' ||
             key === 'timelapse_type' || key === 'notes' || key === 'bbl_calib_mark_logo' ||
             key === 'bbl_use_printhost' || key === 'printer_notes' || key === 'bed_shape' ||
