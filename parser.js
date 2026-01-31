@@ -420,6 +420,23 @@ function categorizeSettings(config) {
     process.name = printSettingsId;
     process.print_settings_id = printSettingsId;
 
+    // Add required fields for OrcaSlicer validation
+    machine.version = "1.0.0";
+    machine.instantiation = "true";
+
+    filament.version = "1.0.0";
+    filament.instantiation = "true";
+    filament.compatible_printers = [];
+    filament.compatible_printers_condition = "";
+    filament.compatible_prints = [];
+    filament.compatible_prints_condition = "";
+    filament.default_filament_colour = [""];
+
+    process.version = "1.0.0";
+    process.instantiation = "true";
+    process.compatible_printers = [];
+    process.compatible_printers_condition = "";
+
     // Parse inherits_group to set inheritance
     // Format: ;"Filament";"Printer" or "Process";"Filament";"Printer"
     if (config['inherits_group']) {
