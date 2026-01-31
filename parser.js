@@ -402,9 +402,9 @@ function parseGcode(gcodeText) {
 }
 
 function categorizeSettings(config) {
-    const machine = { type: "machine", from: "User", is_custom_defined: "0" };
-    const filament = { type: "filament", from: "User", is_custom_defined: "0" };
-    const process = { type: "process", from: "User", is_custom_defined: "0" };
+    const machine = { from: "User", is_custom_defined: "0" };
+    const filament = { from: "User", is_custom_defined: "0" };
+    const process = { from: "User", is_custom_defined: "0" };
 
     // Extract metadata first
     const printerSettingsId = config['printer_settings_id'] || 'Recovered Printer';
@@ -422,10 +422,8 @@ function categorizeSettings(config) {
 
     // Add required fields for OrcaSlicer validation
     machine.version = "1.0.0";
-    machine.instantiation = "true";
 
     filament.version = "1.0.0";
-    filament.instantiation = "true";
     filament.compatible_printers = [];
     filament.compatible_printers_condition = "";
     filament.compatible_prints = [];
@@ -433,7 +431,6 @@ function categorizeSettings(config) {
     filament.default_filament_colour = [""];
 
     process.version = "1.0.0";
-    process.instantiation = "true";
     process.compatible_printers = [];
     process.compatible_printers_condition = "";
 
